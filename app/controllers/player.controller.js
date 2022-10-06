@@ -61,8 +61,8 @@ exports.findAll = (req, res) => {
     })
     .then(data => {
       res.status(200).json({
-        result: "SUCCESS",
-        message: data
+        mesaage: "SUCCESS",
+        result: data
       });
     })
     .catch(err => {
