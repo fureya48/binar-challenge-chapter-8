@@ -1,0 +1,22 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: bisque;
+    background-size: cover;
+    height: 100vh;
+  }
+.Dashboard {
+    background-color: bisque;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .App .form{
+    width: 400px;
+    height: 100vh;
+  }
+
+  .form{
+    margin-top: 50px;
+  }
