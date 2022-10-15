@@ -8,8 +8,8 @@
   }
 .Dashboard {
     background-color: bisque;
-    background-size: cover;
-    height: 100vh;
+    height: 150vh;
+    padding: 50px;
   }
   
   .App .form{

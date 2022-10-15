@@ -10,31 +10,40 @@ function Edit() {
 
   const usernameRef = useRef();
   const emailRef = useRef();
-  const passwordRef = useRef();
   const expRef = useRef();
 
-  // const getPlayer = async () => {
-  //   try {
-  //     const data = await axios.get("/api/players/")
-  //   } catch (error) {
-      
-  //   }
-  // }
+  const getPlayer = async () => {
+    try {
+      const data = await axios.get("/api/players/" + playerID)
+      const {
+        username,
+        email,
+        experience
+      } = data.data.message
+
+      usernameRef.current.value = username
+      emailRef.current.value = email
+      expRef.current.value = experience
+
+    } catch (error) {
+      console.log(error )
+    }
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const payload = {
       username: usernameRef.current.value,
       email: emailRef.current.value,
-      password: passwordRef.current.value,
       exp: expRef.current.value,
     };
 
     axios
-      .post("/api/players", payload)
+      .put("/api/players/" + playerID, payload)
       .then((res) => {
         resetValue();
-        alert("Success");
+        alert("Updated Success");
         navigate(-1);
       })
       .catch((err) => {
@@ -47,9 +56,13 @@ function Edit() {
   const resetValue = () => {
     usernameRef.current.value = null;
     emailRef.current.value = null;
-    passwordRef.current.value = null;
     expRef.current.value = null;
   };
+
+  useEffect(()=>{
+    getPlayer()
+  })
+
   return (
     <div className="App">
       <Container className="form" fluid="md">
